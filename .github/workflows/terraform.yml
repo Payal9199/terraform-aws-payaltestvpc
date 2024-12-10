@@ -23,15 +23,15 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ./terraform  # .tf file directory location
+        working-directory: ./example  # .tf file directory location
 
       - name: Terraform Validate
         run: terraform validate
-        working-directory: ./terraform  # .tf file directory location
+        working-directory: ./example  # .tf file directory location
 
       - name: Terraform Plan
         run: terraform plan
-        working-directory: ./terraform  # .tf file directory location
+        working-directory: ./example  # .tf file directory location
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Inject AWS_ACCESS_KEY_ID from GitHub secrets
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Inject AWS_SECRET_ACCESS_KEY from GitHub secrets
@@ -39,7 +39,7 @@ jobs:
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: terraform apply -auto-approve
-        working-directory: ./terraform  # .tf file directory location
+        working-directory: ./example  # .tf file directory location
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Inject AWS_ACCESS_KEY_ID from GitHub secrets
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Inject AWS_SECRET_ACCESS_KEY from GitHub secrets
