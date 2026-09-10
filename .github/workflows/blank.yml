@@ -34,3 +34,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+  test:
+      runs-on: ubuntu-latest
+    steps:
+      - name: Terraform installer
+        uses: autero1/action-terraform@v3.0.1
+        with:
+        terraform-version: "1.12.2"
+   
